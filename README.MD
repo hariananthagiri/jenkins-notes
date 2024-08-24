@@ -114,8 +114,27 @@ agent {
 **example**
 agent { node { label 'AGENT-1' } }
 
-5. options
-    * to enable any new plugin we use it
+5. environment
+    * it is used to use environment variables
+    * we write it prior to build and under the pipeline
+    * to see all environment variables use **env** command
+    * to see or print particular variable "$variable_name"
+    * genrally we use it to store a link 
+* **syntax**
+```Jenkins
+environment {
+    env_variable_name = 'value'
+}
+```
+* **example**
+```Jenkins
+environment {
+    GREETING = 'IAM USING JENKINS'
+}
+```
+
+6. options
+    * to enable OR disable any new plugin we use it
     * this option is used under pipeline
 * **syntax**
 ```Jenkins
@@ -127,9 +146,23 @@ options {
 ```Jenkins
 options {
         ansiColor('xterm')
+        timeout(time: '1' unit: 'HOURS')
+        disableconcorentbuilds()
     }
 ```
-
+7. parameters
+    * to pass values to the variables based on the datatype we use parameters
+* **syntax**
+```Jenkins
+parameters {
+    datatype(name: 'variable_name1',defaultValue: 'variable_value',description: 'write description')
+}
+```
+* to use the particular values in stored in the parameter use as below
+```
+${params.variable_name}
+```
+* first time when we run prameters in jenkins it wont work we have use an option called **build with parameters** enable it
 * **POST**
     * The post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the post section within the Pipeline).
     * it will be added after stages 
@@ -159,8 +192,9 @@ post {
 * Post-condition blocks contain steps the same as the steps section.
 
 * **steps** in steps genrelly we write linux commands
-    * ex:- **sh ''' commands '''** using single quotes
-* **single quotes are very importent in jenkins **''** **
+    * ex:- **sh ''' commands '''** using single quotes or double quotes
+* **single quotes or double quotes are very importent in jenkins '' & "" to run commands**
+
 * **commants**
     * to do commants in Jenkins use **//**
 
