@@ -1,6 +1,6 @@
 ### JENKINS
 - jenkins is a continues intigration tool
-`  genrally jenkins stores all of its data on **/var/lib/jenkins** folder
+- genrally jenkins stores all of its data on **/var/lib/jenkins** folder
 #### SETUP
 * go to jenkins.io select centos
 * to install jenkins use below command
