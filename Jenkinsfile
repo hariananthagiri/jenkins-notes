@@ -5,7 +5,7 @@ pipeline {
         } 
     }
     environment {
-        GREETING = hello jenkins
+        GREETING = 'hello jenkins'
     }
     options {
         ansiColor('xterm')
@@ -13,7 +13,7 @@ pipeline {
     parameters {
     string(name: 'Name', defaultValue: 'hari krishna', description: 'writeing my name')
     }
-}
+
     // build
     stages {
         stage('Build') {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing2....'
+                echo 'Testing....'
                     sh '''
                     ls -ltr
                     pwd
@@ -33,7 +33,7 @@ pipeline {
         }  
         stage('Deploy') {
             steps {
-                echo 'Deploying1....'
+                echo 'Deploying....'
                 sh '''
                     ls -ltr
                     pwd

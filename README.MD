@@ -117,7 +117,7 @@ agent { node { label 'AGENT-1' } }
 5. environment
     * it is used to use environment variables
     * we write it prior to build and under the pipeline
-    * to see all environment variables use **env** command
+    * to see all environment variables use **printenv** command
     * to see or print particular variable "$variable_name"
     * genrally we use it to store a link 
 * **syntax**
@@ -193,6 +193,7 @@ post {
 
 * **steps** in steps genrelly we write linux commands
     * ex:- **sh ''' commands '''** using single quotes or double quotes
+* for single command use **sh'command'**
 * **single quotes or double quotes are very importent in jenkins '' & "" to run commands**
 
 * **commants**
