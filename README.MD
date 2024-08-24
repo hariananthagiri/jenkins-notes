@@ -105,7 +105,11 @@ pipeline {
     * agent { node { label 'labelName' } } behaves the same as agent { label 'labelName' }, but node allows for additional options (such as customWorkspace).
     * to add particular agent use below syntax
 ```Jenkins
-agent { node { label 'labelName' } }
+agent { 
+    node { 
+        label 'labelName' 
+    } 
+}
 ```
 **example**
 agent { node { label 'AGENT-1' } }
