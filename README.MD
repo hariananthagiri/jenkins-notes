@@ -159,11 +159,12 @@ parameters {
 }
 ```
 * to use the particular values in stored in the parameter use as below
+```sh
+echo "${params.variable_name}"
 ```
-${params.variable_name}
-```
-* first time when we run prameters in jenkins it wont work we have use an option called **build with parameters** enable it
-* **POST**
+* first time when we run prameters in jenkins it wont work we have use an option called **build with parameters** enable it to do it refresh it first
+* execute commands **sh"""dont give commands here"""**
+### POST
     * The post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the post section within the Pipeline).
     * it will be added after stages 
     * post can support any of the following post-condition blocks: 
