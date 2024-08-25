@@ -168,6 +168,7 @@ echo "${params.variable_name}"
 * execute commands **sh"""dont give commands here"""**
 8. input
 * to run next stage by takeing approveal or permission
+* to approve yes or abort to a step we use it
 * **syntax**
 ```Jenkins
 input{
@@ -176,7 +177,7 @@ input{
 }
 ```
 * if we give yes it will continue
-* if we give no it wont continue
+* if we give abort it will stop
 9. when
 * it is nothing but giveing a condition
 ```jenkins
@@ -244,4 +245,10 @@ jenkins-url/github-webhook/
 * for every stage it will go to root folder to move to seprate folder we have to mention it by below
 ```sh
 cd folder/name
+```
+* to install terraform in linux meachine centos
+```sh
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
 ```
