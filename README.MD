@@ -87,6 +87,8 @@ pipeline {
 * pipeline is of two types
 1. pipeline script
 2. pipeline script from SCM (Git)
+    * we have to provide git repository link here
+    * first it will clone all the folders available in repository then it will perform what we execute in it
 
 * **multypule sections in pipeline**
 1. Agent
