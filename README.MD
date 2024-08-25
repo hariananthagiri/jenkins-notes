@@ -168,7 +168,9 @@ echo "${params.variable_name}"
 * execute commands **sh"""dont give commands here"""**
 8. input
 * to run next stage by takeing approveal or permission
+* it is nothing but giveing permission to run from stage to step by provideing yes or abort
 * to approve yes or abort to a step we use it
+* **stage ===> start or abort ===> steps (it contain commands)**
 * **syntax**
 ```Jenkins
 input{
