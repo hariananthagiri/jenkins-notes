@@ -164,6 +164,28 @@ echo "${params.variable_name}"
 ```
 * first time when we run prameters in jenkins it wont work we have use an option called **build with parameters** enable it to do it refresh it first
 * execute commands **sh"""dont give commands here"""**
+8. input
+* to run next stage by takeing approveal or permission
+* **syntax**
+```Jenkins
+input{
+    message "should we continue?"
+    ok "yes, we should." 
+}
+```
+* if we give yes it will continue
+* if we give no it wont continue
+9. when
+* it is nothing but giveing a condition
+```jenkins
+when {
+    expression {
+        condition
+    }
+}
+```
+* it is used at build area below stages
+
 ### POST
     * The post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the post section within the Pipeline).
     * it will be added after stages 
@@ -216,3 +238,8 @@ jenkins-url/github-webhook/
 2. **configure-setup**
 * **build triggers ===> select github hook trigger for GITScm pooling ===> apply & save**
 
+#### NOTE
+* for every stage it will go to root folder to move to seprate folder we have to mention it by below
+```sh
+cd folder/name
+```
