@@ -190,17 +190,41 @@ when {
 }
 ```
 * it is used at build area below stages
+9. script
+* to write the groovy script below steps we use it
+* **syntax**
+```
+script {
+    write scrript
+}
+```
+* **example**
+```
+script {
+    def packageJson = readJSON file: 'package.json'
+    packageVersion = packageJson.version
+    echo "application version: $packageVersion"
+}
+```
+* in above example dnf(defination) it is used to create a variable store content in it
+* we are storeing entire content of package.json file in packageJson variable
+* if we wont to refer anything in that file use as below
+    * **packageJson.what_you_want**
+    * ex: packageJson.version
 
 ### POST
     * The post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the post section within the Pipeline).
     * it will be added after stages 
     * post can support any of the following post-condition blocks: 
         * always, changed, fixed, regression, aborted, failure, success, unstable, unsuccessful, and cleanup.
+* **deleteDir()**
+    * to delete the Directory(workspace folder) after pipeline is runned or completed
 * **syntax**
 ```Jenkins
 post { 
         always { 
             echo 'It will whethere job is sucess or not'
+            deleteDir()
         }
           failure { 
             echo 'It will whethere job is failure'
@@ -254,3 +278,75 @@ sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 sudo yum -y install terraform
 ```
+
+* **labauto**
+    * it is used to install applications directly from server using root access
+    * by this we no need to go to internet and search for application
+```sh
+sudo su 
+labauto
+type what you want
+select 1,2,3 based on avaiabulity
+```
+
+#### NOTE
+1. git
+* **git ===> repository ===> stores code ===> dont store artifacts**
+
+2. NEXUS
+* **nexus ===> repository ===> stores artifacts ===> dont store  code**
+* nexus requied minimum 2GB RAM
+* sonatype nexus is papular 
+* **artifacts** it is nothing but our applicatins (i.e zip file, jar file var files, compiled files e.t.c..)
+* **SETUP**
+* install a server of centos ===> t3.meadium ===> 30gp2 
+* **syntax**
+```
+sudo su
+labauto
+give nexus and select install.sh
+ip_address:8081
+signin
+user_name - admin
+password - /password/path/copy and check there copy password and paste in nexus
+```
+* to create repository in nexus
+* **settings ===> repositorys ===> create repository(maven2hosted) ===> options ===> finally click on create repository ===> it gives a URL**
+* **options**
+    * name              - give name
+    * version policy    - mixed (snapshot - devlopment env, relese - production env so we are using mixed)
+    * layout policy     - permisive
+    * deployment policy - allow redploy
+* **maven 2 formate**
+* it stores everything in a seprate folder parent-folder/child-folder1/child-folder2/child-folder3/child-folder4
+
+* **zip command**
+```sh
+zip -r file_name what_you_want -x what_you_dont_want
+```
+* **file_name** with what file_name you want to store your zip file
+* **what_you_want** what you want from the folder your ziping
+* **what_you_dont_want** what you don't want from the folder your ziping
+* **-r** ===> include what_you_want
+* **-x** ===> exclude what_you_dont_want
+* ./* everything from current folder
+* -x "*.zip" next time your ziping the ziped file it wont include it
+
+
+* **example**
+```sh
+zip -r catlogue.zip ./* -x ".git" -x "*.zip"
+```
+* to unzip the ziped file use below command
+```sh
+unzip ziped_file_name
+unzip catalogue.zip
+```
+* **silent zip log**
+* because for jenkins memory is importent
+* zip contains more logs that consumes jenkins master memory
+* use below command to quite the zip log
+```sh
+zip -q -r catlogue.zip ./* -x ".git" -x "*.zip"
+```
+    * q - quite
