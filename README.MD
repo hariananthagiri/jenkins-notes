@@ -201,6 +201,14 @@ script {
 * **example**
 ```
 script {
+    def browsers = ['chrome', 'firefox']
+    for (int i = 0; i < browsers.size(); ++i) {
+        echo "Testing the ${browsers[i]} browser"
+    }
+}   
+```
+```
+script {
     def packageJson = readJSON file: 'package.json'
     packageVersion = packageJson.version
     echo "application version: $packageVersion"
