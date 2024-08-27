@@ -238,7 +238,7 @@ script {
     * post can support any of the following post-condition blocks: 
         * always, changed, fixed, regression, aborted, failure, success, unstable, unsuccessful, and cleanup.
 * **deleteDir()**
-    * to delete the Directory(workspace folder) after pipeline is runned or completed
+    * to delete the Directory(in workspace cloned folder) after pipeline is runned or completed 
 * **syntax**
 ```Jenkins
 post { 
