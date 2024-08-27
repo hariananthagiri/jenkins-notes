@@ -1,6 +1,7 @@
 ### JENKINS
 - jenkins is a continues intigration tool
 - genrally jenkins stores all of its data on **/var/lib/jenkins** folder
+- everything we store in a directory named **workspace**
 #### SETUP
 * go to jenkins.io select centos
 * to install jenkins use below command
@@ -87,6 +88,17 @@ pipeline {
 * pipeline is of two types
 1. pipeline script
 2. pipeline script from SCM (Git)
+    * options
+        1. pipeline scm
+        2. SCM - Git
+        3. git repository URL
+        4. script path(which file to execute from git and specify path/of/file) 
+           * ex: Jenkinsfile, catalogue/Jenkinsfile
+        5. specify branch name
+            * */main
+        6. apply & save
+* **setup**
+* **pipeline scm ==> SCM - Git ==> git repository URL ==> script path-Jenkinsfile ==> branch name-*/main ==> apply & save**
     * we have to provide git repository link here
     * first it will clone all the folders available in repository then it will perform what we execute in it
 
