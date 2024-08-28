@@ -318,6 +318,8 @@ select 1,2,3 based on avaiabulity
 * nexus requied minimum 2GB RAM
 * sonatype nexus is papular 
 * **artifacts** it is nothing but our applicatins (i.e zip file, jar file var files, compiled files e.t.c..)
+* there is a plug in jenkins **nexus artifact uploader** install and use nexus URL, Authontication info by this we can push the zip file from jenkins to nexus
+    * plugin name - Nexus Artifact Uploader
 * **SETUP**
 * install a server of centos ===> t3.meadium ===> 30gp2 
 * **syntax**
