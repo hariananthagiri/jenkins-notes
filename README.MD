@@ -20,9 +20,17 @@ sudo systemctl enable jenkins
 /var/lib/jenkins/secrets/initialAdminPassword
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-* **dashboard** where we lunch directly it is a central option everything is done here
+
+* **Jenkins-Optiions**
+
+* **dashboard** where we lunch directly it is a central option everything is done here createing job here
 * **configure** we can edit what we configure here
 * **build now** to execute the commands
+* **manage jenkins**  it contains several options like 
+    1. system configure (Nodes, plugins, cloud, e.t.c..) 
+    2. security (security, credentials, users, e.t.c..) 
+    3. status information (system information, system log, e.t.c...)
+    
 
 * everything in jenkins is a job there are two types of jobs 
     1. freestyle
