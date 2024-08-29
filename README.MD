@@ -30,7 +30,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
     1. system configure (Nodes, plugins, cloud, e.t.c..) 
     2. security (security, credentials, users, e.t.c..) 
     3. status information (system information, system log, e.t.c...)
-    
+
 
 * everything in jenkins is a job there are two types of jobs 
     1. freestyle
@@ -349,7 +349,10 @@ password - /password/path/copy and check there copy password and paste in nexus
     * deployment policy - allow redploy
 * **maven 2 formate**
 * it stores everything in a seprate folder parent-folder/child-folder1/child-folder2/child-folder3/child-folder4
-
+* it contain two type views
+    1. narmal view
+    * **Narmalview ===> browse ===> repository name**
+    2. settings 
 * **zip command**
 ```sh
 zip -r file_name what_you_want -x what_you_dont_want
@@ -380,3 +383,35 @@ unzip catalogue.zip
 zip -q -r catlogue.zip ./* -x ".git" -x "*.zip"
 ```
     * q - quite
+#### calling one pipeline from another pipeline with parameters
+* **syntax**
+```Jenkins
+stage ('Bulild') {
+    script {
+        def parameter_name = [
+            parameter values
+        ]
+    }
+    steps {
+        bulildjob: "job_name", wait: true, parameters: parameter_name
+    }
+}
+```
+* **example**
+```Jenkins
+stage ('Bulild') {
+    steps {
+        script {
+            def params = [
+                string(name: 'version', defaultValue: '', description: 'What is the artifact version?'),
+                booleanParam(name: 'Create', defaultValue: 'false', description: 'What is Create?')
+           ]
+        }
+        bulildjob: "catalogue-deploy", wait: true, parameters: params
+    }
+}
+```
+* **wait: true**  it will until job gets completed
+* **wait: false** it will skip the job and move to other step
+#### Note
+* there is a plugin called rebuild to run the configureation with old values
