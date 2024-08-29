@@ -113,30 +113,32 @@ pipeline {
 * **multypule sections in pipeline**
 1. Agent
     1. any
-    * Execute the Pipeline, or stage, on any available agent. 
-    For example: agent any
-2. none
-    * When applied at the top-level of the pipeline block no global agent will be allocated for the entire Pipeline run and each stage section will need to contain its own  agent section. 
-    * For example: agent none
+        * Execute the Pipeline, or stage, on any available agent. 
+        For example: agent any
 
-3. label
-    * Execute the Pipeline, or stage, on an agent available in the Jenkins environment with the provided label. For example: agent { label 'my-defined-label' }
-    * Label conditions can also be used: 
-    * For example: agent { label 'my-label1 && my-label2' } or agent { label 'my-label1 || my-label2' }
-4. node
-    * agent { node { label 'labelName' } } behaves the same as agent { label 'labelName' }, but node allows for additional options (such as customWorkspace).
-    * to add particular agent use below syntax
-```Jenkins
-agent { 
-    node { 
-        label 'labelName' 
-    } 
-}
-```
-**example**
-agent { node { label 'AGENT-1' } }
+    2. none
+        * When applied at the top-level of the pipeline block no global agent will be allocated for the entire Pipeline run and each stage section will need to contain its own  agent section. 
+        * For example: agent none
 
-5. environment
+    3. label
+        * Execute the Pipeline, or stage, on an agent available in the Jenkins environment with the provided label. For example: agent { label 'my-defined-label' }
+        * Label conditions can also be used: 
+        * For example: agent { label 'my-label1 && my-label2' } or agent { label 'my-label1 || my-label2' }
+
+    4. node
+        * agent { node { label 'labelName' } } behaves the same as agent { label 'labelName' }, but node allows for additional options (such as customWorkspace).
+        * to add particular agent use below syntax
+    ```Jenkins
+    agent { 
+        node { 
+            label 'labelName' 
+        } 
+    }
+    ```
+    **example**
+    agent { node { label 'AGENT-1' } }
+
+2. environment
     * it is used to use environment variables
     * we write it prior to build and under the pipeline
     * to see all environment variables use **printenv** command
@@ -155,7 +157,7 @@ environment {
 }
 ```
 
-6. options
+3. options
     * to enable OR disable any new plugin we use it
     * this option is used under pipeline
 * **syntax**
@@ -172,7 +174,8 @@ options {
         disableconcorentbuilds()
     }
 ```
-7. parameters
+
+4. parameters
     * to pass values to the variables based on the datatype we use parameters
 * **syntax**
 ```Jenkins
@@ -186,7 +189,8 @@ echo "${params.variable_name}"
 ```
 * first time when we run prameters in jenkins it wont work we have use an option called **build with parameters** enable it to do it refresh it first
 * execute commands **sh"""dont give commands here"""**
-8. input
+
+5. input
 * to run next stage by takeing approveal or permission
 * it is nothing but giveing permission to run from stage to step by provideing yes or abort
 * to approve yes or abort to a step we use it
@@ -200,7 +204,8 @@ input{
 ```
 * if we give yes it will continue
 * if we give abort it will stop
-9. when
+
+6. when
 * it is nothing but giveing a condition
 ```jenkins
 when {
@@ -210,7 +215,8 @@ when {
 }
 ```
 * it is used at build area below stages
-9. script
+
+7. script
 * to write the groovy script below steps we use it
 * **syntax**
 ```
@@ -239,6 +245,21 @@ script {
 * if we wont to refer anything in that file use as below
     * **packageJson.what_you_want**
     * ex: packageJson.version
+#### BUILD
+8. stages
+* stages in jenkins mentioned below
+    1. Build
+    2. Test
+    3. Deploy
+* inside every stage we have steps
+
+9. steps
+    * in evey step we write commands
+```
+sh '''
+echo "write commands here"
+'''
+```
 
 ### POST
     * The post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run (depending on the location of the post section within the Pipeline).
@@ -390,7 +411,7 @@ stage ('Bulild') {
     script {
         def parameter_name = [
             parameter values
-        ]
+        ]    
     }
     steps {
         bulildjob: "job_name", wait: true, parameters: parameter_name
