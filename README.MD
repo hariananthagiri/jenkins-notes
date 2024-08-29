@@ -15,7 +15,7 @@ sudo systemctl status jenkins
 sudo systemctl enable jenkins
 ```
 * junkins runs at 8080 port number
-* browse **IP_ADDRESS:8080** you san see password/path cat password/path copy it and paste it at jenkins install reqied plugins
+* browse **JENKINS_IP_ADDRESS:8080** you san see password/path cat password/path copy it and paste it at jenkins install reqied plugins
 ```jenkins
 /var/lib/jenkins/secrets/initialAdminPassword
 cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -143,7 +143,11 @@ pipeline {
     * we write it prior to build and under the pipeline
     * to see all environment variables use **printenv** command
     * to see or print particular variable "$variable_name"
-    * genrally we use it to store a link 
+    * it is used in all stages availablein pipeline
+    * to see all environment variables **/env-vars.html/**  use below command
+    ```
+    JENKINS_IP_ADDRESS:8080/env-vars.html/
+    ```
 * **syntax**
 ```Jenkins
 environment {
@@ -180,7 +184,17 @@ options {
 * **syntax**
 ```Jenkins
 parameters {
-    datatype(name: 'variable_name1',defaultValue: 'variable_value',description: 'write description')
+    string (name, defaultValue, description)
+    choice (name, choices, description)
+    booleanParam (name, defaultValue, description)
+}
+```
+* **example**
+```Jenkins
+parameters {
+    string (name: 'variable_name1',defaultValue: 'variable_value',description: 'write description')
+    choice (name: 'variable_name1',choices: ['variable_value1', 'variable_value2'], description: 'write description')
+    booleanParam (name: 'variable_name1', defaultValue: 'true', description: 'write description')
 }
 ```
 * to use the particular values in stored in the parameter use as below
