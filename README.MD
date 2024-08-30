@@ -2,6 +2,8 @@
 - jenkins is a continues intigration tool
 - genrally jenkins stores all of its data on **/var/lib/jenkins** folder
 - everything we store in a directory named **workspace**
+- it will store in **~/workspace/job_name**
+    - ~ it is home folder for centos it is /home/centos
 #### SETUP
 * go to jenkins.io select centos
 * to install jenkins use below command
@@ -231,7 +233,8 @@ when {
 * it is used at build area below stages
 
 7. script
-* to write the groovy script below steps we use it
+* to write the groovy script below the steps we use below syntax
+* what ever commands you have to run run it in sctrit dnf only
 * **syntax**
 ```
 script {
