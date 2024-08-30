@@ -238,7 +238,8 @@ when {
 * **syntax**
 ```
 script {
-    write scrript
+    write script
+    write commands
 }
 ```
 * **example**
