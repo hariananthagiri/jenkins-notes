@@ -454,3 +454,67 @@ stage ('Bulild') {
 * **wait: false** it will skip the job and move to other step
 #### Note
 * there is a plugin called rebuild to run the configureation with old values
+
+#### Types of scannings
+1. static source code analysis
+    * tool used here is **sonarqube**
+2. static application security testing
+    * tool used here is **fortify**
+3. dynamic application security testing
+    * tool used here is **webinspect**
+4. open source library scanning
+    * tool used here is **nexus iq**
+5. docker image scanning
+    * tool used here is **twist lock, ECR scanning**
+    
+* **working**
+![Screenshot 2024-09-14 152627](https://github.com/user-attachments/assets/540cd769-d8f2-4ed9-98f1-eaed47ccba21)
+
+* **Sonarqube**
+* **installation**
+    * open linux server take root access sudo su -
+    * use the command **labauto**
+    * select sonarqube number (i.e 60) and also install sonar-scanner (i.e 61)
+* **setup**
+    * the port number of sonarqube is 9000
+    * to login use ip-adress:9000
+    * initial login id and password is **admin**
+    * change and give new if you want to change
+* **Sonar-scanner**
+* **installation**
+    * open linux server take root access sudo su -
+    * use the command **labauto**
+    * select sonarqube number (i.e 60) and also install sonar-scanner (i.e 61)
+* **setup**
+    * goto /opt/sonar/conf/
+    * we can see a file named **sonar-scanner.properties**
+    * open it by using below command
+    ```
+    vim sonar-scanner.properties
+    ```
+    * un comment a line as show in below
+    ```sh
+    # sonar.host.url=http://localhost:9000
+    sonar.host.url=http://private-ip-sonarqube:9000
+    sonar.login=paste the token
+    ```
+    * in the place of local host give private-ip of sonarqube and add the above line
+    * **token creation**
+    * open sonarqube console and fallow below process
+    * A[Adminstator] ==> my account ==> security ==> genrate token (give a meaningfull name)
+* Now create a file with name **sonar-project.properties**
+* give below credentials in that file
+```
+sonar.projectkey=catalogue
+```
+* **syntax**
+```
+stage('sonar scan') {
+    steps {
+        sh '''
+            sonar-scanner
+        '''
+    }
+}
+```
+* by using the command **sonar-scanner** it read the sonar-project.properties
