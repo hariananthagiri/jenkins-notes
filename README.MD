@@ -523,4 +523,9 @@ stage('sonar scan') {
 
 * **jenkins shared library** 
     * treat your pipeline as library, use it wherever you want
-* **GOTO manage jenkins ==> system ==> Globol pipeline libraies ==> add ==> name, branch, repository location, ==> apply and save** 
+* **GOTO manage jenkins ==> system ==> Globol pipeline libraies ==> add ==> name, branch, repository location, ==> apply and save**  
+* **syntax**    
+```
+#!groovy
+@Library('roboshop-shared-library') 
+```
