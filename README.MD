@@ -518,3 +518,9 @@ stage('sonar scan') {
 }
 ```
 * by using the command **sonar-scanner** it read the sonar-project.properties
+
+#### multi branch pipeline
+
+* **jenkins shared library** 
+    * treat your pipeline as library, use it wherever you want
+* **GOTO manage jenkins ==> system ==> Globol pipeline libraies ==> add ==> name, branch, repository location, ==> apply and save** 
