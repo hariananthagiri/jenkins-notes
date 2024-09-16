@@ -521,6 +521,10 @@ stage('sonar scan') {
 
 #### multi branch pipeline
 
+* while createing a job select multi branch pipeline
+* it will show all available branches in your git repository 
+* build in whatever branch we want
+
 * **jenkins shared library** 
     * treat your pipeline as library, use it wherever you want
 * **GOTO manage jenkins ==> system ==> Globol pipeline libraies ==> add ==> name, branch, repository location, ==> apply and save**  
