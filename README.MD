@@ -533,3 +533,20 @@ stage('sonar scan') {
 #!groovy
 @Library('shared-library-name') _
 ```
+* **nodejsvm pipeline** 
+    * implement best standards, reuse, centralised location
+* **pipelineDecission.groovy** 
+    * to decide which pipeline to CALL
+* **pipelineGlobals.groovy** 
+    * we can store all static values here like sonarqube urls and nexus urls and any other we can store here
+* **syntax**
+```
+static final String nexusURL(){
+    return "172.31.5.95:8081"
+}
+```
+* here **static final String** is common
+* to give above value use **pipelineGlobals.nexusURL()** it gives url 
+* **NOTE** 
+    * to create a variable we use **def** in groovy
+
