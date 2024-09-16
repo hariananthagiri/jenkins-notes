@@ -549,4 +549,50 @@ static final String nexusURL(){
 * to give above value use **pipelineGlobals.nexusURL()** it gives url 
 * **NOTE** 
     * to create a variable we use **def** in groovy
+* **parallel stages in jenkins**
+    * it contains a keyword parallel 
+    * we can run the parallel stages in jenkins to save the time
+    * when there is no dependencys between stages we use parallel stages to save the time
+* **syntax**
+```
+stage('DB ALB') {
+    parallel {
+        stage('DB') {
+            steps {
+                sh """
+                cd 04-databases
+                terraform init -reconfigure
+                terraform apply -auto-approve
+                """
+            }
+        }
+        stage('APP ALB') {
+            steps {
+                sh """
+                cd 05-app-alb
+                terraform init -reconfigure
+                terraform apply -auto-approve
+                """
+            }
+        }
+    }
+}
+       
+    
+```
+#### Change Management Process
+* we will raise a CR(change request) --> every organisation will have their own tool to manage CR.
+  project code, application code, version, JIRA ID, approvals, date and time, deployment process, revert back process, post deployment testing.
+* NEW --> CR ID
+* Approve --> write some comments
+* Delivery manager --> write some comments and approve
+* Cleint --> approve
+* JIRA ==> Ticket Management tool
+* JIRA --> Jenkins integration
+* trigger PROD --> JIRA will check CR is approved or not, prod trigger time is same as time in CR.
+* Jenkins pipeline
+* DEV and PROD infra
+* DEV will do a change in source code, a pipeline will automatically trigger to deploy the application into DEV..
+* then we will deploy into PROD
+
 
