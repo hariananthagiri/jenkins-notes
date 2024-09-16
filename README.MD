@@ -531,5 +531,5 @@ stage('sonar scan') {
 * **syntax**    
 ```
 #!groovy
-@Library('roboshop-shared-library') 
+@Library('shared-library-name') _
 ```
